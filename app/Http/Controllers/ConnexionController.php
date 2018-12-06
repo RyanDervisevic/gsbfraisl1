@@ -28,11 +28,16 @@ class ConnexionController extends Controller
             $id = $visiteur->id;
             $nom =  $visiteur->nom;
             $prenom = $visiteur->prenom;
+            $role = $visiteur->tra_role;
+            $region = $visiteur->reg_nom;
+            $secteur = $visiteur->sec_nom;
             Session::put('id', $id);
             Session::put('nom', $nom);
             Session::put('prenom', $prenom);
-            Session::put('login', $login);
-//            return view('home');
+            Session::put('role', $role);
+            Session::put('region', $region);
+            Session::put('secteur', $secteur);
+//          return view('home');
             return redirect('/');
         }
     }

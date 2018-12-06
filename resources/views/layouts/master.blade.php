@@ -37,7 +37,7 @@
                     </div>
  
   @else  
-                    <a class="navbar-brand" href="#">{{Session::get('nom')}} {{Session::get('prenom')}}</a> 
+                    <a class="navbar-brand" href="#">{{Session::get('nom')}} {{Session::get('prenom')}} </a> 
                     <div class="collapse navbar-collapse" id="navbar-collapse-target">
                         <ul class="nav navbar-nav"> 
                             <li><a href="{{ url('/saisirFraisForfait') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Saisir Frais</a></li>
@@ -48,16 +48,29 @@
                             <li><a href="{{ url('/Logout') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Se déconnecter</a></li>
                         </ul> 
                     </div> 
- @endif 
+ @endif             
                 </div><!--/.container-fluid -->
+               
             </nav>
         </div> 
+         
         <div class="container">
             @yield('content')
+            
         </div>
 {!! Html::script('assets/js/bootstrap.min.js') !!}
 {!! Html::script('assets/js/jquery-2.1.3.min.js')  !!}  
 {!! Html::script('assets/js/ui-bootstrap-tpls.js')  !!}
 {!! Html::script('assets/js/bootstrap.js')  !!}
+@if (Session::get('id') == '0' || Session::get('id') == null) 
+
+@else 
+<div class="container"
+    <p>Role : {{Session::get('role')}}</p> 
+    <p>Region : {{Session::get('region')}} </p>
+    <p>Secteur : {{Session::get('secteur')}}</p>
+</div>
+@endif 
+
     </body>
 </html>
