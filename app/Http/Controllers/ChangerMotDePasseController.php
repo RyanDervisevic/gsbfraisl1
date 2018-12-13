@@ -17,7 +17,7 @@ class ChangerMotDePasseController extends Controller
         
         $login = Session::get('login');
         
-        $ancienmdp = $request->input('ancienmdp');
+        $ancienmdp = md5($request->input('ancienmdp'));
         $nouveaupwd = $request->input('nouveaumdp');
         $nouveaumdpbis = $request->input('nouveaumdpbis');
         

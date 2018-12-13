@@ -67,4 +67,6 @@ Route::post('/getMdp', 'ChangerMotDePasseController@changerMdp');
 Route::get('getRetour/{retour}', function($retour){
     return redirect("/".$retour);
 });
+Route::get('/changerInfo', 'ModifierInfoController@changeinfo');
+
 

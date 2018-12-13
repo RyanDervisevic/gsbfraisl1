@@ -257,7 +257,7 @@ public function getInfosVisiteur($login, $mdp){
  * @param $mdp 
  */
 	public function ChangerMdp($login,$mdp){
-		$req = "update visiteur set mdp = :mdp where login = :login";
+		$req = "update visiteur set mdp = md5(:mdp) where login = :login";
 		DB::update($req, ['login'=>$login, 'mdp'=>$mdp]);
 	}
 }

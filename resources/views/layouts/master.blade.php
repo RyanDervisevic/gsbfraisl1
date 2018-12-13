@@ -37,13 +37,14 @@
                     </div>
  
   @else  
-                    <a class="navbar-brand" href="#">{{Session::get('nom')}} {{Session::get('prenom')}} </a> 
+                    <a class="navbar-brand" href="">{{Session::get('nom')}} {{Session::get('prenom')}}  </a> 
                     <div class="collapse navbar-collapse" id="navbar-collapse-target">
                         <ul class="nav navbar-nav"> 
                             <li><a href="{{ url('/saisirFraisForfait') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Saisir Frais</a></li>
                             <li><a href="{{ url('/getListeFrais') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Voir Frais</a></li>
                         </ul>  
-                        <ul class="nav navbar-nav navbar-right">                             
+                        <ul class="nav navbar-nav navbar-right">  
+                            <li><a href="{{ url('/changerInfo') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Changer information Personelle</a></li>
                             <li><a href="{{ url('/getMdp') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Changer de mot de passe</a></li>
                             <li><a href="{{ url('/Logout') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Se déconnecter</a></li>
                         </ul> 
