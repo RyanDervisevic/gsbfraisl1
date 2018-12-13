@@ -260,5 +260,16 @@ public function getInfosVisiteur($login, $mdp){
 		$req = "update visiteur set mdp = md5(:mdp) where login = :login";
 		DB::update($req, ['login'=>$login, 'mdp'=>$mdp]);
 	}
+        public function listeFraisValider($idVisiteur)
+        {
+            $req = "select fraisforfait.id as idfrais, fraisforfait.libelle as libelle, ligneFraisForfait.mois as mois,
+            lignefraisforfait.quantite as quantite from lignefraisforfait inner join fraisforfait 
+            on fraisforfait.id = lignefraisforfait.idfraisforfait
+            where lignefraisforfait.idvisiteur = idVisiteur
+            order by lignefraisforfait.idfraisforfait";	
+//               echo $req;
+            $lesLignes = DB::select($req, ['idVisiteur'=>$idVisiteur]);
+            return $lesLignes;
+        }
 }
 ?>
