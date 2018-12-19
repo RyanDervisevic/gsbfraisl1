@@ -271,5 +271,17 @@ public function getInfosVisiteur($login, $mdp){
             $lesLignes = DB::select($req, ['idVisiteur'=>$idVisiteur]);
             return $lesLignes;
         }
+        public function getdonnee($login)
+        {
+            $req = "Select adresse, cp,ville,email,telephone from visiteur where login = :login";
+            $ligne = DB::select($req, ['login'=>$login]);
+            return $ligne;
+            
+        }
+        public function setdonnee($cp,$ville,$mail,$tel)
+        {
+            $req="update visiteur set adresse= :adresse , cp = :cp, ville = :ville, email= :email, telephone = :telephone where login= :login";
+            DB::update($req, ['login'=>$login], ['cp'=>$cp], ['ville'=>$ville], ['email'=>$mail], ['telephone'=>$tel]);
+        }
 }
 ?>

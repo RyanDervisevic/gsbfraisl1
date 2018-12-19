@@ -36,21 +36,40 @@
                         </ul> 
                     </div>
  
-  @else  
-                    <a class="navbar-brand" href="">{{Session::get('nom')}} {{Session::get('prenom')}}  </a> 
+
+  @else
+  <a class="navbar-brand" href="home.blade.php">{{Session::get('nom')}} {{Session::get('prenom')}} <br>
+      Role : {{Session::get('role')}} Region : {{Session::get('region')}}<br>
+    Secteur : {{Session::get('secteur')}}</a> 
                     <div class="collapse navbar-collapse" id="navbar-collapse-target">
                         <ul class="nav navbar-nav"> 
-                            <li><a href="{{ url('/saisirFraisForfait') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Saisir Frais</a></li>
+                            <li><a href="{{ url('/saisirFraisForfait') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Saisir Frais</a></li><br>
                             <li><a href="{{ url('/getListeFrais') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Voir Frais</a></li>
-                            <li><a href="{{ url('/validerFRAIS') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Valider Frais</a></li>
+                            
+                            @if(Session::get('role')=='Délégué')
+                            <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Valider Frais</a></li> 
+                            <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Suivre Frais</a></li> 
+                            @endif
+                            @if(Session::get('role')=='Responsable')
+                            
+                            <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Valider Frais</a></li> 
+                            <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Suivre Frais</a></li> 
+                            <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Créer Nouveau Visiteur</a></li> <br>
+                            <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Gérer Visiteur/Délégué</a></li> 
+                            @endif
                         </ul>  
                         <ul class="nav navbar-nav navbar-right">  
                             <li><a href="{{ url('/changerInfo') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Changer information Personelle</a></li>
                             <li><a href="{{ url('/getMdp') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Changer de mot de passe</a></li>
                             <li><a href="{{ url('/Logout') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Se déconnecter</a></li>
                         </ul> 
+                        
                     </div> 
- @endif             
+ @endif  
+ 
+
+
+ 
                 </div><!--/.container-fluid -->
                
             </nav>
@@ -64,15 +83,7 @@
 {!! Html::script('assets/js/jquery-2.1.3.min.js')  !!}  
 {!! Html::script('assets/js/ui-bootstrap-tpls.js')  !!}
 {!! Html::script('assets/js/bootstrap.js')  !!}
-@if (Session::get('id') == '0' || Session::get('id') == null) 
 
-@else 
-<div class="container"
-    <p>Role : {{Session::get('role')}}</p> 
-    <p>Region : {{Session::get('region')}} </p>
-    <p>Secteur : {{Session::get('secteur')}}</p>
-</div>
-@endif 
 
     </body>
 </html>

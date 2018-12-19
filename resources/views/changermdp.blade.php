@@ -27,7 +27,7 @@
                 <input type="password" name="nouveaumdpbis" class="form-control" placeholder="Votre nouveau mot de passe" value="{{old('nouveaumdpbis')}}" required pattern ="[A-Za-z0-9]{8}" title="8 caractères : Majuscules,Minuscules,Chiffres" autofocus >
             </div>
         </div>
-         </div>
+        </div>
         </br>
         <div class="form-group">    
             
