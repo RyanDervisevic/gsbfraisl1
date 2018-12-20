@@ -1,79 +1,48 @@
 @extends('layouts.master')
 @section('content')
-{!! Form::open(['url' => 'changeInfo']) !!}
-<div class="col-md-12 well well-md">
-    <center><h1>Changer d'informations</h1></center>
-    <form method="POST" action="">
-        <div class="row">
-            <p>Role : {{Session::get('role')}}</p>
-            <p>Adresse : {{Session::get('adresse')}}</p>
-            <p>CP : {{Session::get('cp')}}</p>
-            <p>Email : {{Session::get('email')}}</p>
-            <p>Telephone : {{Session::get('telephone')}}</p>
-            </div> 
-        <div class="row">
-            @foreach($visiteur as $unVisiteur)
+{!! Form::open(['url' => 'changerInfo']) !!}
+<div class="col-md-12 col-sm-12 well well-md  well-sm">
+    <center><h1></h1></center>
+    <div class="form-horizontal">  
+        {{Session::get('adresse')}}<br>  
+   {{Session::get('email')}}<br>
+     {{Session::get('cp')}}
+     {{Session::get('ville')}}
+     {{Session::get('telephone')}}
         <div class="form-group">
-            <label class="col-md-3 control-label">Adresse :{{$unVisiteur->adresse}} </label>
-            <div class="col-md-6">
-                <input type="text" name="adresse" class="form-control" value='' placeholder="Votre nouvelle adresse" required autofocus>
+            <label class="col-md-3 col-sm-3 control-label">Info : </label>
+            <div class="col-md-2 col-sm-2">
+                <input type="text" class="form-control"  name="email" value="{{$uneModifan->mail or ''}}" placeholder="mail" pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" required>
+                <input type="text" class="form-control"  name="telephone" value="{{$unFraisHorsForfait->telephone or ''}}" placeholder="Telephone" pattern="(01|02|03|04|05|06|07|08|09)[ \.\-]?[0-9]{2}[ \.\-]?[0-9]{2}[ \.\-]?[0-9]{2}[ \.\-]?[0-9]{2}" required>
+                <input type="text" class="form-control"  name="adresse" value="{{$unFraisHorsForfait->adresse or ''}}" placeholder="Adresse">
+                <input type="text" class="form-control"  name="cp" value="{{$unFraisHorsForfait->cp or ''}}" placeholder="CP" pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}" required>
+                <input type="text" class="form-control"  name="ville" value="{{$unFraisHorsForfait->ville or ''}}" placeholder="Ville" pattern="[a-zA-Z]+$">
             </div>
-        </div>
-            @endforeach
-        </div>
-            <div class="row">
-            <div class="form-group">
-            <label class="col-md-3 control-label">CP : </label>
-            <div class="col-md-6">
-                <input type="text" name="cp" class="form-control" placeholder="Votre nouveau CP" required autofocus>
-            </div>
-        </div>
-        </div>
-            <div class="row">
+        </div>    
+        
+        
         <div class="form-group">
-            <label class="col-md-3 control-label">Ville : </label>
-            <div class="col-md-6">
-                <input type="text" name="ville" class="form-control" placeholder="Votre nouvelle Ville" required autofocus>
-            </div>
+            <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                <button type="submit" class="btn btn-default btn-primary">
+                    <span class="glyphicon glyphicon-ok"></span> Valider
+                </button>
+                
+                <button type="button" class="btn btn-default btn-primary" 
+                        onclick="javascript: window.location = '{{ url('/NewVisiteur')}}';">
+                    <span class="glyphicon glyphicon-remove"></span> Annuler</button>
+            </div>           
         </div>
-            </div>
-         <div class="row">
-        <div class="form-group">
-            <label class="col-md-3 control-label">N°Telephone : </label>
-            <div class="col-md-6">
-                <input type="text" name="telephone" class="form-control" placeholder="Votre nouveau numéro" >
-            </div>
-        </div>
-         </div>
-         <div class="row">
-        <div class="form-group">
-            <label class="col-md-3 control-label">E-Mail : </label>
-            <div class="col-md-6">
-                <input type="text" name="email" class="form-control" placeholder="Votre nouveau e-mail" >
-            </div>
-        </div>
-         </div>
-        </br>
-        <div class="form-group">    
-            
-            <center><button type="submit" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-log-in"></span> Valider</button></center>
-        </div>
-        <div class="form-group">
-            <center><button type="reset" class="btn btn-default"> Reset</button></center>
-        </div>
-    </form>
-     @if (session('erreur'))
+
+
+
+
+
+@if (session('erreur'))
         <div class="alert alert-danger">
          {{ session('erreur') }}
         </div>
     @endif
-    @if (session('status'))
-        <div class="alert alert-success">
-         {{ session('status') }}
-        </div>
-    @endif
-
+    </div>
 </div>
 {!! Form::close() !!}
 @stop
-
