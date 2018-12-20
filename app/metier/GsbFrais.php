@@ -274,22 +274,23 @@ public function getInfosVisiteur($login, $mdp){
             $req = "update fichefrais set idEtat = 'VA' where idVisiteur = :id_visiteur and mois = :mois";
             DB::update($req, ['id_visiteur'=>$id_visiteur, 'mois'=>$mois]);
         }
-        public function getdonnee($login)
+        public function getdonnee($id)
+
         {
-            $req = "Select adresse, cp,ville,email,telephone from visiteur where login = :login";
-            $ligne = DB::select($req, ['login'=>$login]);
+            $req = "Select adresse, cp,ville,email,telephone from visiteur where id = :id";
+            $ligne = DB::select($req, ['id'=>$id]);
             return $ligne;
             
         }
-        public function setdonnee($login,$cp,$ville,$mail,$tel)
+        public function setdonnee($id,$adresse,$cp,$ville,$mail,$telephone)
         {
-            $req="update visiteur set adresse= :adresse , cp = :cp, ville = :ville, email= :email, telephone = :telephone where login= :login";
-            DB::update($req, ['login'=>$login], ['cp'=>$cp], ['ville'=>$ville], ['email'=>$mail], ['telephone'=>$tel]);
+            $req="update visiteur set adresse= :adresse , cp = :cp, ville = :ville, email= :email, telephone = :telephone where id= :id";
+            DB::update($req, ['id'=>$id,'adresse'=>$adresse, 'cp'=>$cp, 'ville'=>$ville,'email'=>$mail,'telephone'=>$telephone]);
         }
-        public function creervisiteur()
+        public function creervisiteur($idVisiteur,$nom,$prenom,$adresse,$cp,$ville,$date,$mail,$telephone)
         {
            $req = "insert into visiteur(id,nom,prenom,adresse,cp,ville,dateEmbauche,email,telephone)values(:id,:nom,:prenom,:adresse,:cp,:ville,:dateEmbauche,:email,:telephone)"; 
-           DB::insert($req, ['id'=>$idVisiteur, 'mois'=>$mois, 'libelle'=>$libelle,'date'=>$date,'montant'=>$montant]);
+           DB::insert($req, ['id'=>$idVisiteur, 'nom'=>$nom, 'prenom'=>$prenom,'adresse'=>$adresse,'cp'=>$cp,'ville'=>$ville,'dateEmbauche'=>$date,'email'=>$mail,'telephone'=>$telephone]);
             
         }
 } 
