@@ -278,10 +278,16 @@ public function getInfosVisiteur($login, $mdp){
             return $ligne;
             
         }
-        public function setdonnee($cp,$ville,$mail,$tel)
+        public function setdonnee($login,$cp,$ville,$mail,$tel)
         {
             $req="update visiteur set adresse= :adresse , cp = :cp, ville = :ville, email= :email, telephone = :telephone where login= :login";
             DB::update($req, ['login'=>$login], ['cp'=>$cp], ['ville'=>$ville], ['email'=>$mail], ['telephone'=>$tel]);
         }
-}
+        public function creervisiteur()
+        {
+           $req = "insert into visiteur(id,nom,prenom,adresse,cp,ville,dateEmbauche,email,telephone)values(:id,:nom,:prenom,:adresse,:cp,:ville,:dateEmbauche,:email,:telephone)"; 
+           DB::insert($req, ['id'=>$idVisiteur, 'mois'=>$mois, 'libelle'=>$libelle,'date'=>$date,'montant'=>$montant]);
+            
+        }
+} 
 ?>

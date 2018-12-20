@@ -12,6 +12,9 @@ class NewVisiteurController extends Controller
 {
     public function NewVisiteur()
     {
+        
+        
+        
         return view('newuser');
         
         

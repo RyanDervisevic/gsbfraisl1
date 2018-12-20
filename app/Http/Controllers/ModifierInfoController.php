@@ -12,27 +12,20 @@ class ModifierInfoController extends Controller
 {
     public function changeInfo(Request $request)
     {
-        $login = $request->input('login');
-        $gsbFrais = new GsbFrais();
-       
-            $res = $gsbFrais->getdonnee($login);
-             $visiteur = $res[0];
-            $adresse = $visiteur->adresse;
-            $cp = $visiteur->cp;
-            $ville = $visiteur->ville;
-            $email = $visiteur->email;
-            $telephone = $visiteur->telephone;
-            Session::put('adresse', $adresse);
-            Session::put('cp', $cp);
-            Session::put('email', $email);
-            Session::put('telephone', $telephone);
-            
+        $login = Session::get('login');
+        $cp = Session::get('cp');
+        $ville = Session::get('ville');
+        $mail = Session::get('email');
+        $tel = Session::get('telephone');
+        $uneInfo = new GsbFrais();
+        $uneModifInfo = $uneInfo->setdonnee($login,$cp,$ville,$mail,$tel);
+       // print_r($unFraisHorsForfait);
         
             
             
         
         
-        return view('changeinfo', compact('visiteur'));
+        return view('changeinfo');
         
         
     }
