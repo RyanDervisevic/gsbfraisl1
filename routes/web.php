@@ -67,7 +67,12 @@ Route::post('/getMdp', 'ChangerMotDePasseController@changerMdp');
 Route::get('getRetour/{retour}', function($retour){
     return redirect("/".$retour);
 });
-Route::get('/changerInfo', 'ModifierInfoController@changeinfo');
+Route::get('/changerInfo', function(){
+    
+   return view ('changeinfo'); 
+});
+
+Route::post('/changerInfo', 'ModifierInfoController@changeinfo');
 
 Route::get('/validerFRAIS', 'ValiderFicheFraisController@listeFraisValider');
 
@@ -77,5 +82,8 @@ Route::get('/validation/{mois}/{idVisiteur}', 'ValiderFicheFraisController@valid
 
 Route::post('/validation/{mois}/{idVisiteur}', 'ValiderFicheFraisController@validerfichefrais');
 
-Route::get('/NewVisiteur', 'NewVisiteurController@NewVisiteur');
+Route::get('/NewVisiteur', function () {
+   return view ('newuser');
+});
+Route::post('/NewVisiteur', 'NewVisiteurController@NewVisiteur');
 //Route::post('/ficheFRAIS', 'ValiderFicheFraisController@validerfichefrais');
