@@ -1,38 +1,38 @@
 @extends('layouts.master')
 @section('content')
-
+{!! Form::open(['url' => 'NewVisiteur']) !!}
 <div class="col-md-12 col-sm-12 well well-md  well-sm">
-    <center><h1>{{$titreVue or ''}}</h1></center>
+    <center><h1></h1></center>
     <div class="form-horizontal">  
         
         <div class="form-group">
             <label class="col-md-3 col-sm-3 control-label">ID : </label>
             <div class="col-md-2 col-sm-2">
-                <input type="text" name="id" value="{{$unFraisHorsForfait->id or ''}}" class="form-control" placeholder="Mettre un ID" patter="" required autofocus>
+                <input type="text" name="id" value="id" class="form-control" placeholder="Mettre un ID" maxlength="4" required >
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-3 col-sm-3 control-label">Nom et prenom : </label>
             <div class="col-md-2 col-sm-2">
-                <input type="text" name="prenom" value="{{$unFraisHorsForfait->prenom or ''}}"  class="form-control" placeholder="Prenom" required>
-                <input type="text" name="nom" value="{{$unFraisHorsForfait->nom or ''}}"  class="form-control" placeholder="Nom" required>
+                <input type="text" name="prenom" value="prenom"  class="form-control" placeholder="Prenom" pattern="[a-zA-Z]+$" required>
+                <input type="text" name="nom" value="nom"  class="form-control" placeholder="Nom" pattern="[a-zA-Z]+$"required>
             </div>
         </div>           
         <div class="form-group">
             <label class="col-md-3 col-sm-3 control-label">Info : </label>
             <div class="col-md-2 col-sm-2">
-                <input type="text" class="form-control"  name="mail" value="{{$unFraisHorsForfait->mail or ''}}" placeholder="mail" pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" required>
-                <input type="text" class="form-control"  name="tel" value="{{$unFraisHorsForfait->tel or ''}}" placeholder="Telephone" pattern="(01|02|03|04|05|06|07|08|09)[ \.\-]?[0-9]{2}[ \.\-]?[0-9]{2}[ \.\-]?[0-9]{2}[ \.\-]?[0-9]{2}" required>
-                <input type="text" class="form-control"  name="adresse" value="{{$unFraisHorsForfait->adresse or ''}}" placeholder="Adresse" pattern="" required>
-                <input type="text" class="form-control"  name="cp" value="{{$unFraisHorsForfait->cp or ''}}" placeholder="CP" pattern="([A-Z]+[A-Z]?\-)?[0-9]{1,2} ?[0-9]{3}" required>
-                <input type="text" class="form-control"  name="ville" value="{{$unFraisHorsForfait->ville or ''}}" placeholder="Ville" pattern="" required>
+                <input type="text" class="form-control"  name="email" value="{{$unFraisHorsForfait->mail or ''}}" placeholder="mail" pattern="[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})" required>
+                <input type="text" class="form-control"  name="telephone" value="{{$unFraisHorsForfait->tel or ''}}" placeholder="Telephone" pattern="(01|02|03|04|05|06|07|08|09)[ \.\-]?[0-9]{2}[ \.\-]?[0-9]{2}[ \.\-]?[0-9]{2}[ \.\-]?[0-9]{2}" required>
+                <input type="text" class="form-control"  name="adresse" value="{{$unFraisHorsForfait->adresse or ''}}" placeholder="Adresse">
+                <input type="text" class="form-control"  name="cp" value="{{$unFraisHorsForfait->cp or ''}}" placeholder="CP" pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}" required>
+                <input type="text" class="form-control"  name="ville" value="{{$unFraisHorsForfait->ville or ''}}" placeholder="Ville" pattern="[a-zA-Z]+$">
             </div>
         </div>    
         <div class="form-group">
             <label class="col-md-3 col-sm-3 control-label">Date embauche : </label>
             <div class="col-md-2 col-sm-2">
-                <input type="date" name="dateembauche" value="{{$unFraisHorsForfait->dateEmbauche or ''}}" class="form-control" placeholder="Date Embauche" required autofocus>
+                <input type="date" name="dateEmbauche" value="{{$unFraisHorsForfait->dateEmbauche or ''}}" class="form-control" placeholder="Date Embauche" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" autofocus>
             </div>
         </div>
         
@@ -62,4 +62,3 @@
 </div>
 {!! Form::close() !!}
 @stop
-
