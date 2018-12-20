@@ -71,5 +71,11 @@ Route::get('/changerInfo', 'ModifierInfoController@changeinfo');
 
 Route::get('/validerFRAIS', 'ValiderFicheFraisController@listeFraisValider');
 
+Route::get('/listeDetail/{mois}/{idVisiteur}', 'ValiderFicheFraisController@voirDetailFraisValider');
+
+Route::get('/validation/{mois}/{idVisiteur}', 'ValiderFicheFraisController@validerfichefrais');
+
+Route::post('/validation/{mois}/{idVisiteur}', 'ValiderFicheFraisController@validerfichefrais');
+
 Route::get('/NewVisiteur', 'NewVisiteurController@NewVisiteur');
 //Route::post('/ficheFRAIS', 'ValiderFicheFraisController@validerfichefrais');

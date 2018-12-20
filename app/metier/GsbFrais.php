@@ -260,16 +260,19 @@ public function getInfosVisiteur($login, $mdp){
 		$req = "update visiteur set mdp = md5(:mdp) where login = :login";
 		DB::update($req, ['login'=>$login, 'mdp'=>$mdp]);
 	}
-        public function listeFraisValider($idVisiteur)
+        public function listeFraisValider($region)
         {
-            $req = "select fraisforfait.id as idfrais, fraisforfait.libelle as libelle, ligneFraisForfait.mois as mois,
-            lignefraisforfait.quantite as quantite from lignefraisforfait inner join fraisforfait 
-            on fraisforfait.id = lignefraisforfait.idfraisforfait
-            where lignefraisforfait.idvisiteur = idVisiteur
-            order by lignefraisforfait.idfraisforfait";	
+            $req = "select DISTINCT(mois), nbJustificatifs, montantValide, idEtat, fichefrais.idVisiteur from fichefrais inner JOIN
+                    vaffectation on fichefrais.idVisiteur = vaffectation.idVisiteur
+                    where fichefrais.idEtat = 'CL' and fichefrais.idVisiteur = (select vaffectation.idVisiteur where vaffectation.reg_nom = :region)";	
 //               echo $req;
-            $lesLignes = DB::select($req, ['idVisiteur'=>$idVisiteur]);
+            $lesLignes = DB::select($req, ['region'=>$region]);
             return $lesLignes;
+        }
+        public function validerFraisValider($mois,$id_visiteur)
+        {
+            $req = "update fichefrais set idEtat = 'VA' where idVisiteur = :id_visiteur and mois = :mois";
+            DB::update($req, ['id_visiteur'=>$id_visiteur, 'mois'=>$mois]);
         }
         public function getdonnee($login)
         {

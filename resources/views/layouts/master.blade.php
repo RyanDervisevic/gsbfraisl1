@@ -47,13 +47,13 @@
                             <li><a href="{{ url('/getListeFrais') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Voir Frais</a></li>
                             
                             @if(Session::get('role')=='Délégué')
-                            <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Valider Frais</a></li> 
+                            <li> <a href="{{ url('/validerFRAIS') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Valider Frais</a></li> 
                             <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Suivre Frais</a></li> 
                             @endif
                             @if(Session::get('role')=='Responsable')
                             
                             <li><a href="{{ url('/NewVisiteur') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Creer Nouveau Utilisateur</a></li>
-                            <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Valider Frais</a></li> 
+                            <li> <a href="{{ url('/validerFRAIS') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Valider Frais</a></li> 
                             <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Suivre Frais</a></li> 
                             
                             <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Gérer Visiteur/Délégué</a></li> 
