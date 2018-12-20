@@ -52,6 +52,7 @@
                             @endif
                             @if(Session::get('role')=='Responsable')
                             
+                            <li><a href="{{ url('/NewVisiteur') }}" data-toggle="collapse" data-target=".navbar-collapse.in">Creer Nouveau Utilisateur</a></li>
                             <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Valider Frais</a></li> 
                             <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Suivre Frais</a></li> 
                             <li> <a href="{{ url('/changerInfo') }}"data-toggle="collapse" data-target=".navbar-collapse.in">Créer Nouveau Visiteur</a></li> <br>
